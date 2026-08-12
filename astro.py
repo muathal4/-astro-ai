@@ -1,26 +1,9 @@
-"""ASTRO - أول نسخة من الروبوت الرقمي."""
+"""ASTRO - الروبوت الرقمي."""
+
+from commands import process_command
 
 
-def respond(command: str) -> str:
-    """يعطي استرو ردًا بسيطًا على بعض الأوامر العربية."""
-    text = command.strip().lower()
-
-    if text in {"مرحبا", "هلا", "السلام عليكم"}:
-        return "وعليكم السلام! أنا استرو 🤖"
-
-    if "اسمك" in text:
-        return "اسمي استرو 🤖"
-
-    if "كيف حالك" in text:
-        return "بخير! وجاهز للأوامر 🚀"
-
-    if text in {"خروج", "exit", "quit"}:
-        return "__EXIT__"
-
-    return "ما فهمت الأمر حتى الآن، لكن بنتعلم أكثر قريبًا!"
-
-
-def main() -> None:
+def main():
     print("=" * 40)
     print("ASTRO 🤖 | الروبوت الرقمي")
     print("اكتب 'خروج' لإنهاء البرنامج")
@@ -28,7 +11,8 @@ def main() -> None:
 
     while True:
         command = input("أنت: ")
-        reply = respond(command)
+
+        reply = process_command(command)
 
         if reply == "__EXIT__":
             print("استرو: إلى اللقاء! 👋")
